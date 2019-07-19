@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://xmlns.oracle.com/Primavera/P6/WS/Authentication/V1" xmlns:intgfault="http://xmlns.oracle.com/Primavera/P6/WS/IntegrationFaultType/V1" name="AuthenticationService" targetNamespace="http://xmlns.oracle.com/Primavera/P6/WS/Authentication/V1" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://xmlns.oracle.com/Primavera/P6/WS/Authentication/V1">
+      <xsd:import schemaLocation="http://oyster.gnet:8206/p6ws/services/AuthenticationService?xsd=1" namespace="http://xmlns.oracle.com/Primavera/P6/WS/IntegrationFaultType/V1" />
+      <xsd:element name="Login">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="UserName" type="xsd:string" />
+            <xsd:element name="Password" nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="0" name="DatabaseInstanceId" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="LoginResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="Return" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Logout" />
+      <xsd:element name="LogoutResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="Return" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ReadDatabaseInstances" />
+      <xsd:element name="ReadDatabaseInstancesResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" name="DatabaseInstance">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="DatabaseInstanceId" type="xsd:int" />
+                  <xsd:element name="DatabaseEncoding" type="xsd:string" />
+                  <xsd:element name="DatabaseName" type="xsd:string" />
+                  <xsd:element name="DatabaseType" type="tns:DatabaseTypeType" />
+                  <xsd:element name="DatabaseUrl" type="xsd:string" />
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ReadSessionProperties" />
+      <xsd:element name="ReadSessionPropertiesResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="IsValid" type="xsd:boolean" />
+            <xsd:element name="UserObjectId" type="xsd:int" />
+            <xsd:element name="UserName" type="xsd:string" />
+            <xsd:element name="DatabaseInstanceId" type="xsd:int" />
+            <xsd:element name="DatabaseEncoding" type="xsd:string" />
+            <xsd:element name="DatabaseName" type="xsd:string" />
+            <xsd:element name="DatabaseType" type="tns:DatabaseTypeType" />
+            <xsd:element name="DatabaseUrl" type="xsd:string" />
+            <xsd:element name="IgnoreNullComplexFields" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="UpdateSessionProperties">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="IgnoreNullComplexFields" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="UpdateSessionPropertiesResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="Return" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:simpleType name="DatabaseTypeType">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Oracle" />
+          <xsd:enumeration value="SQL Server" />
+        </xsd:restriction>
+      </xsd:simpleType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="LoginRequest">
+    <wsdl:part name="params" element="tns:Login" />
+  </wsdl:message>
+  <wsdl:message name="LoginResponse">
+    <wsdl:part name="result" element="tns:LoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="LogoutRequest">
+    <wsdl:part name="params" element="tns:Logout" />
+  </wsdl:message>
+  <wsdl:message name="LogoutResponse">
+    <wsdl:part name="result" element="tns:LogoutResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadDatabaseInstancesRequest">
+    <wsdl:part name="params" element="tns:ReadDatabaseInstances" />
+  </wsdl:message>
+  <wsdl:message name="ReadDatabaseInstancesResponse">
+    <wsdl:part name="result" element="tns:ReadDatabaseInstancesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadSessionPropertiesRequest">
+    <wsdl:part name="params" element="tns:ReadSessionProperties" />
+  </wsdl:message>
+  <wsdl:message name="ReadSessionPropertiesResponse">
+    <wsdl:part name="result" element="tns:ReadSessionPropertiesResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateSessionPropertiesRequest">
+    <wsdl:part name="params" element="tns:UpdateSessionProperties" />
+  </wsdl:message>
+  <wsdl:message name="UpdateSessionPropertiesResponse">
+    <wsdl:part name="result" element="tns:UpdateSessionPropertiesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IntegrationFault">
+    <wsdl:part name="fault" element="intgfault:IntegrationFault" />
+  </wsdl:message>
+  <wsdl:portType name="AuthenticationServicePortType">
+    <wsdl:operation name="Login">
+      <wsdl:input message="tns:LoginRequest" />
+      <wsdl:output message="tns:LoginResponse" />
+      <wsdl:fault name="IntegrationFault" message="tns:IntegrationFault" />
+    </wsdl:operation>
+    <wsdl:operation name="Logout">
+      <wsdl:input message="tns:LogoutRequest" />
+      <wsdl:output message="tns:LogoutResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadDatabaseInstances">
+      <wsdl:input message="tns:ReadDatabaseInstancesRequest" />
+      <wsdl:output message="tns:ReadDatabaseInstancesResponse" />
+      <wsdl:fault name="IntegrationFault" message="tns:IntegrationFault" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadSessionProperties">
+      <wsdl:input message="tns:ReadSessionPropertiesRequest" />
+      <wsdl:output message="tns:ReadSessionPropertiesResponse" />
+      <wsdl:fault name="IntegrationFault" message="tns:IntegrationFault" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSessionProperties">
+      <wsdl:input message="tns:UpdateSessionPropertiesRequest" />
+      <wsdl:output message="tns:UpdateSessionPropertiesResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AuthenticationServiceSOAP12Binding" type="tns:AuthenticationServicePortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Login">
+      <soap:operation soapAction="urn:Login" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="IntegrationFault">
+        <soap:fault use="literal" name="IntegrationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="Logout">
+      <soap:operation soapAction="urn:Logout" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadDatabaseInstances">
+      <soap:operation soapAction="urn:ReadDatabaseInstances" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="IntegrationFault">
+        <soap:fault use="literal" name="IntegrationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ReadSessionProperties">
+      <soap:operation soapAction="urn:ReadSessionProperties" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="IntegrationFault">
+        <soap:fault use="literal" name="IntegrationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSessionProperties">
+      <soap:operation soapAction="urn:UpdateSessionProperties" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AuthenticationService">
+    <wsdl:port name="AuthenticationServiceSOAP12port_http" binding="tns:AuthenticationServiceSOAP12Binding">
+      <soap:address location="http://oyster.gnet:8206/p6ws/services/AuthenticationService" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

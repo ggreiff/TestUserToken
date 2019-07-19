@@ -1,0 +1,1852 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://xmlns.oracle.com/Primavera/P6/WS/Project/V2" xmlns:intgfault="http://xmlns.oracle.com/Primavera/P6/WS/IntegrationFaultType/V1" name="ProjectService" targetNamespace="http://xmlns.oracle.com/Primavera/P6/WS/Project/V2" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://xmlns.oracle.com/Primavera/P6/WS/Project/V2">
+      <xsd:import schemaLocation="http://oyster.gnet:8206/p6ws/services/ProjectService?xsd=1" namespace="http://xmlns.oracle.com/Primavera/P6/WS/IntegrationFaultType/V1" />
+      <xsd:complexType name="CreateProjects">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" name="Project" type="tns:Project" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="CreateProjectsResponse">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ObjectId" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="CreateProjects" type="tns:CreateProjects" />
+      <xsd:element name="CreateProjectsResponse" type="tns:CreateProjectsResponse" />
+      <xsd:complexType name="ReadProjects">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" name="Field" type="tns:ProjectFieldType" />
+          <xsd:element minOccurs="0" name="Filter" type="xsd:string" />
+          <xsd:element minOccurs="0" name="OrderBy" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ReadProjectsResponse">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Project" type="tns:Project" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ReadProjects" type="tns:ReadProjects" />
+      <xsd:element name="ReadProjectsResponse" type="tns:ReadProjectsResponse" />
+      <xsd:simpleType name="ProjectFieldType">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="ActivityDefaultActivityType" />
+          <xsd:enumeration value="ActivityDefaultCalendarName" />
+          <xsd:enumeration value="ActivityDefaultCalendarObjectId" />
+          <xsd:enumeration value="ActivityDefaultCostAccountObjectId" />
+          <xsd:enumeration value="ActivityDefaultDurationType" />
+          <xsd:enumeration value="ActivityDefaultPercentCompleteType" />
+          <xsd:enumeration value="ActivityDefaultPricePerUnit" />
+          <xsd:enumeration value="ActivityDefaultReviewRequired" />
+          <xsd:enumeration value="ActivityIdBasedOnSelectedActivity" />
+          <xsd:enumeration value="ActivityIdIncrement" />
+          <xsd:enumeration value="ActivityIdPrefix" />
+          <xsd:enumeration value="ActivityIdSuffix" />
+          <xsd:enumeration value="ActivityPercentCompleteBasedOnActivitySteps" />
+          <xsd:enumeration value="AddActualToRemaining" />
+          <xsd:enumeration value="AddedBy" />
+          <xsd:enumeration value="AllowNegativeActualUnitsFlag" />
+          <xsd:enumeration value="AllowStatusReview" />
+          <xsd:enumeration value="AnnualDiscountRate" />
+          <xsd:enumeration value="AnticipatedFinishDate" />
+          <xsd:enumeration value="AnticipatedStartDate" />
+          <xsd:enumeration value="AssignmentDefaultDrivingFlag" />
+          <xsd:enumeration value="AssignmentDefaultRateType" />
+          <xsd:enumeration value="CalculateFloatBasedOnFinishDate" />
+          <xsd:enumeration value="CheckOutDate" />
+          <xsd:enumeration value="CheckOutStatus" />
+          <xsd:enumeration value="CheckOutUserObjectId" />
+          <xsd:enumeration value="ComputeTotalFloatType" />
+          <xsd:enumeration value="ContainsSummaryData" />
+          <xsd:enumeration value="ContractManagementGroupName" />
+          <xsd:enumeration value="ContractManagementProjectName" />
+          <xsd:enumeration value="CostQuantityRecalculateFlag" />
+          <xsd:enumeration value="CreateDate" />
+          <xsd:enumeration value="CreateUser" />
+          <xsd:enumeration value="CriticalActivityFloatLimit" />
+          <xsd:enumeration value="CriticalActivityFloatThreshold" />
+          <xsd:enumeration value="CriticalActivityPathType" />
+          <xsd:enumeration value="CriticalFloatThreshold" />
+          <xsd:enumeration value="CurrentBaselineProjectObjectId" />
+          <xsd:enumeration value="CurrentBudget" />
+          <xsd:enumeration value="CurrentVariance" />
+          <xsd:enumeration value="DataDate" />
+          <xsd:enumeration value="DateAdded" />
+          <xsd:enumeration value="DefaultPriceTimeUnits" />
+          <xsd:enumeration value="Description" />
+          <xsd:enumeration value="DiscountApplicationPeriod" />
+          <xsd:enumeration value="DistributedCurrentBudget" />
+          <xsd:enumeration value="EarnedValueComputeType" />
+          <xsd:enumeration value="EarnedValueETCComputeType" />
+          <xsd:enumeration value="EarnedValueETCUserValue" />
+          <xsd:enumeration value="EarnedValueUserPercent" />
+          <xsd:enumeration value="EnablePrimeSycFlag" />
+          <xsd:enumeration value="EnablePublication" />
+          <xsd:enumeration value="EnableSummarization" />
+          <xsd:enumeration value="FinishDate" />
+          <xsd:enumeration value="FiscalYearStartMonth" />
+          <xsd:enumeration value="ForecastFinishDate" />
+          <xsd:enumeration value="ForecastStartDate" />
+          <xsd:enumeration value="GUID" />
+          <xsd:enumeration value="HasFutureBucketData" />
+          <xsd:enumeration value="HistoryInterval" />
+          <xsd:enumeration value="HistoryLevel" />
+          <xsd:enumeration value="Id" />
+          <xsd:enumeration value="IgnoreOtherProjectRelationships" />
+          <xsd:enumeration value="IndependentETCLaborUnits" />
+          <xsd:enumeration value="IndependentETCTotalCost" />
+          <xsd:enumeration value="IntegratedType" />
+          <xsd:enumeration value="IsTemplate" />
+          <xsd:enumeration value="LastApplyActualsDate" />
+          <xsd:enumeration value="LastFinancialPeriodObjectId" />
+          <xsd:enumeration value="LastLevelDate" />
+          <xsd:enumeration value="LastPublishedOn" />
+          <xsd:enumeration value="LastScheduleDate" />
+          <xsd:enumeration value="LastSummarizedDate" />
+          <xsd:enumeration value="LastUpdateDate" />
+          <xsd:enumeration value="LastUpdateUser" />
+          <xsd:enumeration value="LevelAllResources" />
+          <xsd:enumeration value="LevelDateFlag" />
+          <xsd:enumeration value="LevelFloatThresholdCount" />
+          <xsd:enumeration value="LevelOuterAssign" />
+          <xsd:enumeration value="LevelOuterAssignPriority" />
+          <xsd:enumeration value="LevelOverAllocationPercent" />
+          <xsd:enumeration value="LevelPriorityList" />
+          <xsd:enumeration value="LevelResourceList" />
+          <xsd:enumeration value="LevelWithinFloat" />
+          <xsd:enumeration value="LevelingPriority" />
+          <xsd:enumeration value="LimitMultipleFloatPaths" />
+          <xsd:enumeration value="LinkActualToActualThisPeriod" />
+          <xsd:enumeration value="LinkPercentCompleteWithActual" />
+          <xsd:enumeration value="LinkPlannedAndAtCompletionFlag" />
+          <xsd:enumeration value="LocationName" />
+          <xsd:enumeration value="LocationObjectId" />
+          <xsd:enumeration value="MakeOpenEndedActivitiesCritical" />
+          <xsd:enumeration value="MaximumMultipleFloatPaths" />
+          <xsd:enumeration value="MultipleFloatPathsEnabled" />
+          <xsd:enumeration value="MultipleFloatPathsEndingActivityObjectId" />
+          <xsd:enumeration value="MultipleFloatPathsUseTotalFloat" />
+          <xsd:enumeration value="MustFinishByDate" />
+          <xsd:enumeration value="Name" />
+          <xsd:enumeration value="NetPresentValue" />
+          <xsd:enumeration value="OBSName" />
+          <xsd:enumeration value="OBSObjectId" />
+          <xsd:enumeration value="ObjectId" />
+          <xsd:enumeration value="OriginalBudget" />
+          <xsd:enumeration value="OutOfSequenceScheduleType" />
+          <xsd:enumeration value="OverallProjectScore" />
+          <xsd:enumeration value="OwnerResourceObjectId" />
+          <xsd:enumeration value="ParentEPSObjectId" />
+          <xsd:enumeration value="PaybackPeriod" />
+          <xsd:enumeration value="PlannedStartDate" />
+          <xsd:enumeration value="PrimaryResourcesCanMarkActivitiesAsCompleted" />
+          <xsd:enumeration value="ProjectForecastStartDate" />
+          <xsd:enumeration value="ProjectScheduleType" />
+          <xsd:enumeration value="PropertyType" />
+          <xsd:enumeration value="ProposedBudget" />
+          <xsd:enumeration value="PublicationPriority" />
+          <xsd:enumeration value="PublishLevel" />
+          <xsd:enumeration value="RelationshipLagCalendar" />
+          <xsd:enumeration value="ResetPlannedToRemainingFlag" />
+          <xsd:enumeration value="ResourceCanBeAssignedToSameActivityMoreThanOnce" />
+          <xsd:enumeration value="ResourcesCanAssignThemselvesToActivities" />
+          <xsd:enumeration value="ResourcesCanEditAssignmentPercentComplete" />
+          <xsd:enumeration value="ResourcesCanMarkAssignmentAsCompleted" />
+          <xsd:enumeration value="ResourcesCanViewInactiveActivities" />
+          <xsd:enumeration value="ReturnOnInvestment" />
+          <xsd:enumeration value="RiskExposure" />
+          <xsd:enumeration value="RiskLevel" />
+          <xsd:enumeration value="RiskMatrixName" />
+          <xsd:enumeration value="RiskMatrixObjectId" />
+          <xsd:enumeration value="RiskScore" />
+          <xsd:enumeration value="ScheduleWBSHierarchyType" />
+          <xsd:enumeration value="ScheduledFinishDate" />
+          <xsd:enumeration value="SourceProjectObjectId" />
+          <xsd:enumeration value="StartDate" />
+          <xsd:enumeration value="StartToStartLagCalculationType" />
+          <xsd:enumeration value="Status" />
+          <xsd:enumeration value="StatusReviewerName" />
+          <xsd:enumeration value="StatusReviewerObjectId" />
+          <xsd:enumeration value="StrategicPriority" />
+          <xsd:enumeration value="SummarizeResourcesRolesByWBS" />
+          <xsd:enumeration value="SummarizeToWBSLevel" />
+          <xsd:enumeration value="SummarizedDataDate" />
+          <xsd:enumeration value="SummaryAccountingVarianceByCost" />
+          <xsd:enumeration value="SummaryAccountingVarianceByLaborUnits" />
+          <xsd:enumeration value="SummaryActivityCount" />
+          <xsd:enumeration value="SummaryActualDuration" />
+          <xsd:enumeration value="SummaryActualExpenseCost" />
+          <xsd:enumeration value="SummaryActualFinishDate" />
+          <xsd:enumeration value="SummaryActualLaborCost" />
+          <xsd:enumeration value="SummaryActualLaborUnits" />
+          <xsd:enumeration value="SummaryActualMaterialCost" />
+          <xsd:enumeration value="SummaryActualNonLaborCost" />
+          <xsd:enumeration value="SummaryActualNonLaborUnits" />
+          <xsd:enumeration value="SummaryActualStartDate" />
+          <xsd:enumeration value="SummaryActualThisPeriodCost" />
+          <xsd:enumeration value="SummaryActualThisPeriodLaborCost" />
+          <xsd:enumeration value="SummaryActualThisPeriodLaborUnits" />
+          <xsd:enumeration value="SummaryActualThisPeriodMaterialCost" />
+          <xsd:enumeration value="SummaryActualThisPeriodNonLaborCost" />
+          <xsd:enumeration value="SummaryActualThisPeriodNonLaborUnits" />
+          <xsd:enumeration value="SummaryActualTotalCost" />
+          <xsd:enumeration value="SummaryActualValueByCost" />
+          <xsd:enumeration value="SummaryActualValueByLaborUnits" />
+          <xsd:enumeration value="SummaryAtCompletionDuration" />
+          <xsd:enumeration value="SummaryAtCompletionExpenseCost" />
+          <xsd:enumeration value="SummaryAtCompletionLaborCost" />
+          <xsd:enumeration value="SummaryAtCompletionLaborUnits" />
+          <xsd:enumeration value="SummaryAtCompletionMaterialCost" />
+          <xsd:enumeration value="SummaryAtCompletionNonLaborCost" />
+          <xsd:enumeration value="SummaryAtCompletionNonLaborUnits" />
+          <xsd:enumeration value="SummaryAtCompletionTotalCost" />
+          <xsd:enumeration value="SummaryAtCompletionTotalCostVariance" />
+          <xsd:enumeration value="SummaryBaselineCompletedActivityCount" />
+          <xsd:enumeration value="SummaryBaselineDuration" />
+          <xsd:enumeration value="SummaryBaselineExpenseCost" />
+          <xsd:enumeration value="SummaryBaselineFinishDate" />
+          <xsd:enumeration value="SummaryBaselineInProgressActivityCount" />
+          <xsd:enumeration value="SummaryBaselineLaborCost" />
+          <xsd:enumeration value="SummaryBaselineLaborUnits" />
+          <xsd:enumeration value="SummaryBaselineMaterialCost" />
+          <xsd:enumeration value="SummaryBaselineNonLaborCost" />
+          <xsd:enumeration value="SummaryBaselineNonLaborUnits" />
+          <xsd:enumeration value="SummaryBaselineNotStartedActivityCount" />
+          <xsd:enumeration value="SummaryBaselineStartDate" />
+          <xsd:enumeration value="SummaryBaselineTotalCost" />
+          <xsd:enumeration value="SummaryBudgetAtCompletionByCost" />
+          <xsd:enumeration value="SummaryBudgetAtCompletionByLaborUnits" />
+          <xsd:enumeration value="SummaryCompletedActivityCount" />
+          <xsd:enumeration value="SummaryCostPercentComplete" />
+          <xsd:enumeration value="SummaryCostPercentOfPlanned" />
+          <xsd:enumeration value="SummaryCostPerformanceIndexByCost" />
+          <xsd:enumeration value="SummaryCostPerformanceIndexByLaborUnits" />
+          <xsd:enumeration value="SummaryCostVarianceByCost" />
+          <xsd:enumeration value="SummaryCostVarianceByLaborUnits" />
+          <xsd:enumeration value="SummaryCostVarianceIndex" />
+          <xsd:enumeration value="SummaryCostVarianceIndexByCost" />
+          <xsd:enumeration value="SummaryCostVarianceIndexByLaborUnits" />
+          <xsd:enumeration value="SummaryDurationPercentComplete" />
+          <xsd:enumeration value="SummaryDurationPercentOfPlanned" />
+          <xsd:enumeration value="SummaryDurationVariance" />
+          <xsd:enumeration value="SummaryEarnedValueByCost" />
+          <xsd:enumeration value="SummaryEarnedValueByLaborUnits" />
+          <xsd:enumeration value="SummaryEstimateAtCompletionByCost" />
+          <xsd:enumeration value="SummaryEstimateAtCompletionByLaborUnits" />
+          <xsd:enumeration value="SummaryEstimateAtCompletionHighPercentByLaborUnits" />
+          <xsd:enumeration value="SummaryEstimateAtCompletionLowPercentByLaborUnits" />
+          <xsd:enumeration value="SummaryEstimateToCompleteByCost" />
+          <xsd:enumeration value="SummaryEstimateToCompleteByLaborUnits" />
+          <xsd:enumeration value="SummaryExpenseCostPercentComplete" />
+          <xsd:enumeration value="SummaryExpenseCostVariance" />
+          <xsd:enumeration value="SummaryFinishDateVariance" />
+          <xsd:enumeration value="SummaryInProgressActivityCount" />
+          <xsd:enumeration value="SummaryLaborCostPercentComplete" />
+          <xsd:enumeration value="SummaryLaborCostVariance" />
+          <xsd:enumeration value="SummaryLaborUnitsPercentComplete" />
+          <xsd:enumeration value="SummaryLaborUnitsVariance" />
+          <xsd:enumeration value="SummaryLevel" />
+          <xsd:enumeration value="SummaryMaterialCostPercentComplete" />
+          <xsd:enumeration value="SummaryMaterialCostVariance" />
+          <xsd:enumeration value="SummaryNonLaborCostPercentComplete" />
+          <xsd:enumeration value="SummaryNonLaborCostVariance" />
+          <xsd:enumeration value="SummaryNonLaborUnitsPercentComplete" />
+          <xsd:enumeration value="SummaryNonLaborUnitsVariance" />
+          <xsd:enumeration value="SummaryNotStartedActivityCount" />
+          <xsd:enumeration value="SummaryPerformancePercentCompleteByCost" />
+          <xsd:enumeration value="SummaryPerformancePercentCompleteByLaborUnits" />
+          <xsd:enumeration value="SummaryPlannedCost" />
+          <xsd:enumeration value="SummaryPlannedDuration" />
+          <xsd:enumeration value="SummaryPlannedExpenseCost" />
+          <xsd:enumeration value="SummaryPlannedFinishDate" />
+          <xsd:enumeration value="SummaryPlannedLaborCost" />
+          <xsd:enumeration value="SummaryPlannedLaborUnits" />
+          <xsd:enumeration value="SummaryPlannedMaterialCost" />
+          <xsd:enumeration value="SummaryPlannedNonLaborCost" />
+          <xsd:enumeration value="SummaryPlannedNonLaborUnits" />
+          <xsd:enumeration value="SummaryPlannedStartDate" />
+          <xsd:enumeration value="SummaryPlannedValueByCost" />
+          <xsd:enumeration value="SummaryPlannedValueByLaborUnits" />
+          <xsd:enumeration value="SummaryProgressFinishDate" />
+          <xsd:enumeration value="SummaryRemainingDuration" />
+          <xsd:enumeration value="SummaryRemainingExpenseCost" />
+          <xsd:enumeration value="SummaryRemainingFinishDate" />
+          <xsd:enumeration value="SummaryRemainingLaborCost" />
+          <xsd:enumeration value="SummaryRemainingLaborUnits" />
+          <xsd:enumeration value="SummaryRemainingMaterialCost" />
+          <xsd:enumeration value="SummaryRemainingNonLaborCost" />
+          <xsd:enumeration value="SummaryRemainingNonLaborUnits" />
+          <xsd:enumeration value="SummaryRemainingStartDate" />
+          <xsd:enumeration value="SummaryRemainingTotalCost" />
+          <xsd:enumeration value="SummarySchedulePercentComplete" />
+          <xsd:enumeration value="SummarySchedulePercentCompleteByLaborUnits" />
+          <xsd:enumeration value="SummarySchedulePerformanceIndexByCost" />
+          <xsd:enumeration value="SummarySchedulePerformanceIndexByLaborUnits" />
+          <xsd:enumeration value="SummaryScheduleVarianceByCost" />
+          <xsd:enumeration value="SummaryScheduleVarianceByLaborUnits" />
+          <xsd:enumeration value="SummaryScheduleVarianceIndex" />
+          <xsd:enumeration value="SummaryScheduleVarianceIndexByCost" />
+          <xsd:enumeration value="SummaryScheduleVarianceIndexByLaborUnits" />
+          <xsd:enumeration value="SummaryStartDateVariance" />
+          <xsd:enumeration value="SummaryToCompletePerformanceIndexByCost" />
+          <xsd:enumeration value="SummaryTotalCostVariance" />
+          <xsd:enumeration value="SummaryTotalFloat" />
+          <xsd:enumeration value="SummaryUnitsPercentComplete" />
+          <xsd:enumeration value="SummaryVarianceAtCompletionByLaborUnits" />
+          <xsd:enumeration value="SyncWbsHierarchyFlag" />
+          <xsd:enumeration value="TeamMemberActivityFields" />
+          <xsd:enumeration value="TeamMemberAddNewActualUnits" />
+          <xsd:enumeration value="TeamMemberAssignmentOption" />
+          <xsd:enumeration value="TeamMemberCanStatusOtherResources" />
+          <xsd:enumeration value="TeamMemberCanUpdateNotebooks" />
+          <xsd:enumeration value="TeamMemberDisplayPlannedUnits" />
+          <xsd:enumeration value="TeamMemberIncludePrimaryResources" />
+          <xsd:enumeration value="TeamMemberResourceAssignmentFields" />
+          <xsd:enumeration value="TeamMemberStepsAddDeletable" />
+          <xsd:enumeration value="TeamMemberViewableFields" />
+          <xsd:enumeration value="TotalBenefitPlan" />
+          <xsd:enumeration value="TotalBenefitPlanTally" />
+          <xsd:enumeration value="TotalFunding" />
+          <xsd:enumeration value="TotalSpendingPlan" />
+          <xsd:enumeration value="TotalSpendingPlanTally" />
+          <xsd:enumeration value="UnallocatedBudget" />
+          <xsd:enumeration value="UndistributedCurrentVariance" />
+          <xsd:enumeration value="UnifierCBSTasksOnlyFlag" />
+          <xsd:enumeration value="UnifierDataMappingName" />
+          <xsd:enumeration value="UnifierDeleteActivitiesFlag" />
+          <xsd:enumeration value="UnifierEnabledFlag" />
+          <xsd:enumeration value="UnifierProjectNumber" />
+          <xsd:enumeration value="UnifierScheduleSheetName" />
+          <xsd:enumeration value="UseExpectedFinishDates" />
+          <xsd:enumeration value="UseProjectBaselineForEarnedValue" />
+          <xsd:enumeration value="WBSCodeSeparator" />
+          <xsd:enumeration value="WBSHierarchyLevels" />
+          <xsd:enumeration value="WBSMilestonePercentComplete" />
+          <xsd:enumeration value="WBSObjectId" />
+          <xsd:enumeration value="WebSiteRootDirectory" />
+          <xsd:enumeration value="WebSiteURL" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="UpdateProjects">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" name="Project" type="tns:Project" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="UpdateProjectsResponse">
+        <xsd:sequence>
+          <xsd:element name="Return" type="xsd:boolean" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="UpdateProjects" type="tns:UpdateProjects" />
+      <xsd:element name="UpdateProjectsResponse" type="tns:UpdateProjectsResponse" />
+      <xsd:complexType name="DeleteProjects">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="unbounded" name="ObjectId" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="DeleteProjectsResponse">
+        <xsd:sequence>
+          <xsd:element name="Return" type="xsd:boolean" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="DeleteProjects" type="tns:DeleteProjects" />
+      <xsd:element name="DeleteProjectsResponse" type="tns:DeleteProjectsResponse" />
+      <xsd:complexType name="CopyBaseline">
+        <xsd:sequence>
+          <xsd:element name="ObjectId" type="xsd:int" />
+          <xsd:element name="BaselineObjectId" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="CopyBaselineResponse">
+        <xsd:sequence>
+          <xsd:element name="ObjectId" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="CopyBaseline" type="tns:CopyBaseline" />
+      <xsd:element name="CopyBaselineResponse" type="tns:CopyBaselineResponse" />
+      <xsd:complexType name="CopyProject">
+        <xsd:sequence>
+          <xsd:element name="ObjectId" type="xsd:int" />
+          <xsd:element name="EPSObjectId" type="xsd:int" />
+          <xsd:element minOccurs="0" name="CopyRisks" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="CopyIssuesThresholds" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="CopyReports" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="CopyProjectDocuments" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="CopyFundingSources" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="CopySummaryData" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="CopyProjectNotes" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="CopyWBSMilestones" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="CopyActivities" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="CopyHighLevelResourcePlanning" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="CopyResourceAndRoleAssignments" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="CopyRelationships" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="CopyOnlyBetweenCopiedActivities" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="CopyActivityExpenses" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="CopyActivityCodes" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="CopyActivityNotes" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="CopyActivitySteps" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="CopyPastPeriodActuals" type="xsd:boolean" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="CopyProjectResponse">
+        <xsd:sequence>
+          <xsd:element name="ObjectId" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="CopyProject" type="tns:CopyProject" />
+      <xsd:element name="CopyProjectResponse" type="tns:CopyProjectResponse" />
+      <xsd:complexType name="CopyProjectAsBaseline">
+        <xsd:sequence>
+          <xsd:element name="ObjectId" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="CopyProjectAsBaselineResponse">
+        <xsd:sequence>
+          <xsd:element name="ObjectId" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="CopyProjectAsBaseline" type="tns:CopyProjectAsBaseline" />
+      <xsd:element name="CopyProjectAsBaselineResponse" type="tns:CopyProjectAsBaselineResponse" />
+      <xsd:complexType name="CopyProjectAsReflection">
+        <xsd:sequence>
+          <xsd:element name="ObjectId" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="CopyProjectAsReflectionResponse">
+        <xsd:sequence>
+          <xsd:element name="ObjectId" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="CopyProjectAsReflection" type="tns:CopyProjectAsReflection" />
+      <xsd:element name="CopyProjectAsReflectionResponse" type="tns:CopyProjectAsReflectionResponse" />
+      <xsd:complexType name="CreateCopyAsTemplate">
+        <xsd:sequence>
+          <xsd:element name="ObjectId" type="xsd:int" />
+          <xsd:element name="EPSObjectId" type="xsd:int" />
+          <xsd:element minOccurs="0" name="CopyRisks" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="CopyIssuesThresholds" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="CopyReports" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="CopyProjectDocuments" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="CopyFundingSources" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="CopySummaryData" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="CopyProjectNotes" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="CopyActualToPlannedValues" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="CopyWBSMilestones" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="CopyActivities" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="CopyHighLevelResourcePlanning" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="CopyResourceAndRoleAssignments" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="CopyRelationships" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="CopyOnlyBetweenCopiedActivities" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="CopyActivityExpenses" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="CopyActivityCodes" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="CopyActivityNotes" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="CopyActivitySteps" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="CopyPastPeriodActuals" type="xsd:boolean" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="CreateCopyAsTemplateResponse">
+        <xsd:sequence>
+          <xsd:element name="ObjectId" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="CreateCopyAsTemplate" type="tns:CreateCopyAsTemplate" />
+      <xsd:element name="CreateCopyAsTemplateResponse" type="tns:CreateCopyAsTemplateResponse" />
+      <xsd:complexType name="CreateProjectFromTemplate">
+        <xsd:sequence>
+          <xsd:element name="ObjectId" type="xsd:int" />
+          <xsd:element name="EPSObjectId" type="xsd:int" />
+          <xsd:element minOccurs="0" name="CopyRisks" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="CopyIssuesThresholds" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="CopyReports" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="CopyProjectDocuments" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="CopyFundingSources" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="CopySummaryData" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="CopyProjectNotes" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="CopyWBSMilestones" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="CopyActivities" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="CopyHighLevelResourcePlanning" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="CopyResourceAndRoleAssignments" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="CopyRelationships" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="CopyOnlyBetweenCopiedActivities" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="CopyActivityExpenses" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="CopyActivityCodes" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="CopyActivityNotes" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="CopyActivitySteps" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="CopyPastPeriodActuals" type="xsd:boolean" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="CreateProjectFromTemplateResponse">
+        <xsd:sequence>
+          <xsd:element name="ObjectId" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="CreateProjectFromTemplate" type="tns:CreateProjectFromTemplate" />
+      <xsd:element name="CreateProjectFromTemplateResponse" type="tns:CreateProjectFromTemplateResponse" />
+      <xsd:complexType name="UpdateProjectPreferences">
+        <xsd:sequence>
+          <xsd:element name="ObjectId" type="xsd:int" />
+          <xsd:element minOccurs="0" name="EnablePublication" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="PublicationPriority" type="xsd:int" />
+          <xsd:element minOccurs="0" name="LastPublishedOn" type="xsd:string" />
+          <xsd:element minOccurs="0" name="PublishLevel" type="xsd:string" />
+          <xsd:element minOccurs="0" name="DeploymentNames" type="xsd:string" />
+          <xsd:element minOccurs="0" name="DeleteDeployments" type="xsd:string" />
+          <xsd:element minOccurs="0" name="UnifierEnabledFlag" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="UnifierProjectNumber" type="xsd:string" />
+          <xsd:element minOccurs="0" name="UnifierScheduleSheetName" type="xsd:string" />
+          <xsd:element minOccurs="0" name="UnifierDataMappingName" type="xsd:string" />
+          <xsd:element minOccurs="0" name="UnifierDeleteActivitiesFlag" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="UnifierCBSTasksOnlyFlag" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="ProjectScheduleType" type="xsd:string" />
+          <xsd:element minOccurs="0" name="SyncWbsHierarchyFlag" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="ScheduleWBSHierarchyType" type="xsd:string" />
+          <xsd:element minOccurs="0" name="WBSHierarchyLevels" type="xsd:int" />
+          <xsd:element minOccurs="0" name="EnableSummarization" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="SummaryLevel" type="xsd:string" />
+          <xsd:element minOccurs="0" name="SummarizeToWBSLevel" type="xsd:int" />
+          <xsd:element minOccurs="0" name="LastSummarizedDate" type="xsd:string" />
+          <xsd:element minOccurs="0" name="HistoryLevel" type="xsd:string" />
+          <xsd:element minOccurs="0" name="HistoryInterval" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="UpdateProjectPreferencesResponse">
+        <xsd:sequence>
+          <xsd:element name="Return" type="xsd:boolean" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="UpdateProjectPreferences" type="tns:UpdateProjectPreferences" />
+      <xsd:element name="UpdateProjectPreferencesResponse" type="tns:UpdateProjectPreferencesResponse" />
+      <xsd:complexType name="ConvertProjectToBaseline">
+        <xsd:sequence>
+          <xsd:element name="OriginalProjectObjectId" type="xsd:int" />
+          <xsd:element name="TargetProjectObjectId" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ConvertProjectToBaselineResponse">
+        <xsd:sequence>
+          <xsd:element name="BaselineProjectObjectId" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ConvertProjectToBaseline" type="tns:ConvertProjectToBaseline" />
+      <xsd:element name="ConvertProjectToBaselineResponse" type="tns:ConvertProjectToBaselineResponse" />
+      <xsd:complexType name="CalculateProjectScore">
+        <xsd:sequence>
+          <xsd:element name="ProjectObjectId" type="xsd:int" />
+          <xsd:element maxOccurs="unbounded" name="ProjectCodeTypeObjectId" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="CalculateProjectScoreResponse">
+        <xsd:sequence>
+          <xsd:element name="Score" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="CalculateProjectScore" type="tns:CalculateProjectScore" />
+      <xsd:element name="CalculateProjectScoreResponse" type="tns:CalculateProjectScoreResponse" />
+      <xsd:complexType name="CopyWBSFromTemplate">
+        <xsd:sequence>
+          <xsd:element name="ObjectId" type="xsd:int" />
+          <xsd:element name="TemplateWbsObjectId" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="CopyWBSFromTemplateResponse">
+        <xsd:sequence>
+          <xsd:element name="ObjectId" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="CopyWBSFromTemplate" type="tns:CopyWBSFromTemplate" />
+      <xsd:element name="CopyWBSFromTemplateResponse" type="tns:CopyWBSFromTemplateResponse" />
+      <xsd:complexType name="PublishProject">
+        <xsd:sequence>
+          <xsd:element name="ObjectId" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="PublishProjectResponse">
+        <xsd:sequence>
+          <xsd:element name="Return" type="xsd:boolean" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="PublishProject" type="tns:PublishProject" />
+      <xsd:element name="PublishProjectResponse" type="tns:PublishProjectResponse" />
+      <xsd:complexType name="AssignProjectAsBaseline">
+        <xsd:sequence>
+          <xsd:element name="OriginalProjectObjectId" type="xsd:int" />
+          <xsd:element name="TargetProjectObjectId" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="AssignProjectAsBaselineResponse">
+        <xsd:sequence>
+          <xsd:element name="BaselineProjectObjectId" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="AssignProjectAsBaseline" type="tns:AssignProjectAsBaseline" />
+      <xsd:element name="AssignProjectAsBaselineResponse" type="tns:AssignProjectAsBaselineResponse" />
+      <xsd:complexType name="IsProjectLocked">
+        <xsd:sequence>
+          <xsd:element name="ObjectId" type="xsd:int" />
+          <xsd:element name="IncludeCurrentSession" type="xsd:boolean" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="IsProjectLockedResponse">
+        <xsd:sequence>
+          <xsd:element name="Success" type="xsd:boolean" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="IsProjectLocked" type="tns:IsProjectLocked" />
+      <xsd:element name="IsProjectLockedResponse" type="tns:IsProjectLockedResponse" />
+      <xsd:complexType name="LoadActivitiesNewerThanBaseline">
+        <xsd:sequence>
+          <xsd:element name="ObjectId" type="xsd:int" />
+          <xsd:element maxOccurs="unbounded" name="Fields" type="xsd:string" />
+          <xsd:element minOccurs="0" name="WhereClause" type="xsd:string" />
+          <xsd:element minOccurs="0" name="OrderBy" type="xsd:string" />
+          <xsd:element name="BaselineObjectId" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="LoadActivitiesNewerThanBaselineResponse">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" name="ActivityObjectIds" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="LoadActivitiesNewerThanBaseline" type="tns:LoadActivitiesNewerThanBaseline" />
+      <xsd:element name="LoadActivitiesNewerThanBaselineResponse" type="tns:LoadActivitiesNewerThanBaselineResponse" />
+      <xsd:complexType name="LoadActivityUDFValuesNewerThanBaseline">
+        <xsd:sequence>
+          <xsd:element name="ObjectId" type="xsd:int" />
+          <xsd:element maxOccurs="unbounded" name="Fields" type="xsd:string" />
+          <xsd:element minOccurs="0" name="WhereClause" type="xsd:string" />
+          <xsd:element minOccurs="0" name="OrderBy" type="xsd:string" />
+          <xsd:element name="BaselineObjectId" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="LoadActivityUDFValuesNewerThanBaselineResponse">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" name="UDFValueObjectIds" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="LoadActivityUDFValuesNewerThanBaseline" type="tns:LoadActivityUDFValuesNewerThanBaseline" />
+      <xsd:element name="LoadActivityUDFValuesNewerThanBaselineResponse" type="tns:LoadActivityUDFValuesNewerThanBaselineResponse" />
+      <xsd:complexType name="LoadActivityCodesNewerThanBaseline">
+        <xsd:sequence>
+          <xsd:element name="ObjectId" type="xsd:int" />
+          <xsd:element maxOccurs="unbounded" name="Fields" type="xsd:string" />
+          <xsd:element minOccurs="0" name="WhereClause" type="xsd:string" />
+          <xsd:element minOccurs="0" name="OrderBy" type="xsd:string" />
+          <xsd:element name="BaselineObjectId" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="LoadActivityCodesNewerThanBaselineResponse">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" name="ActivityCodeAssignmentObjectIds" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="LoadActivityCodesNewerThanBaseline" type="tns:LoadActivityCodesNewerThanBaseline" />
+      <xsd:element name="LoadActivityCodesNewerThanBaselineResponse" type="tns:LoadActivityCodesNewerThanBaselineResponse" />
+      <xsd:complexType name="LoadAllResources">
+        <xsd:sequence>
+          <xsd:element name="ObjectId" type="xsd:int" />
+          <xsd:element maxOccurs="unbounded" name="Fields" type="xsd:string" />
+          <xsd:element minOccurs="0" name="WhereClause" type="xsd:string" />
+          <xsd:element minOccurs="0" name="OrderBy" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="LoadAllResourcesResponse">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" name="ResourceObjectIds" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="LoadAllResources" type="tns:LoadAllResources" />
+      <xsd:element name="LoadAllResourcesResponse" type="tns:LoadAllResourcesResponse" />
+      <xsd:complexType name="Project">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="ActivityDefaultActivityType">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:enumeration value="Task Dependent" />
+                <xsd:enumeration value="Resource Dependent" />
+                <xsd:enumeration value="Level of Effort" />
+                <xsd:enumeration value="Start Milestone" />
+                <xsd:enumeration value="Finish Milestone" />
+                <xsd:enumeration value="WBS Summary" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ActivityDefaultCalendarName" type="xsd:string" />
+          <xsd:element minOccurs="0" name="ActivityDefaultCalendarObjectId" nillable="true" type="xsd:int" />
+          <xsd:element minOccurs="0" name="ActivityDefaultCostAccountObjectId" nillable="true" type="xsd:int" />
+          <xsd:element minOccurs="0" name="ActivityDefaultDurationType">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:enumeration value="Fixed Units/Time" />
+                <xsd:enumeration value="Fixed Duration and Units/Time" />
+                <xsd:enumeration value="Fixed Units" />
+                <xsd:enumeration value="Fixed Duration and Units" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ActivityDefaultPercentCompleteType">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:enumeration value="Physical" />
+                <xsd:enumeration value="Duration" />
+                <xsd:enumeration value="Units" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ActivityDefaultPricePerUnit" nillable="true">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:double">
+                <xsd:minInclusive value="0.0" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ActivityDefaultReviewRequired" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="ActivityIdBasedOnSelectedActivity" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="ActivityIdIncrement" nillable="true" type="xsd:int" />
+          <xsd:element minOccurs="0" name="ActivityIdPrefix">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="20" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ActivityIdSuffix" nillable="true" type="xsd:int" />
+          <xsd:element minOccurs="0" name="ActivityPercentCompleteBasedOnActivitySteps" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="AddActualToRemaining" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="AddedBy">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="255" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="AllowNegativeActualUnitsFlag" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="AllowStatusReview" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="AnnualDiscountRate" nillable="true">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:double">
+                <xsd:minInclusive value="0.0" />
+                <xsd:maxInclusive value="100.0" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="AnticipatedFinishDate" nillable="true" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="AnticipatedStartDate" nillable="true" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="AssignmentDefaultDrivingFlag" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="AssignmentDefaultRateType">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:enumeration value="Price / Unit" />
+                <xsd:enumeration value="Price / Unit 2" />
+                <xsd:enumeration value="Price / Unit 3" />
+                <xsd:enumeration value="Price / Unit 4" />
+                <xsd:enumeration value="Price / Unit 5" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="CalculateFloatBasedOnFinishDate" nillable="true" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="CheckOutDate" nillable="true" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="CheckOutStatus" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="CheckOutUserObjectId" nillable="true" type="xsd:int" />
+          <xsd:element minOccurs="0" name="ComputeTotalFloatType">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:enumeration value="Start Float = Late Start - Early Start" />
+                <xsd:enumeration value="Finish Float = Late Finish - Early Finish" />
+                <xsd:enumeration value="Smallest of Start Float and Finish Float" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ContainsSummaryData" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="ContractManagementGroupName">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="255" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ContractManagementProjectName">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="24" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="CostQuantityRecalculateFlag" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="CreateDate" nillable="true" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="CreateUser">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="255" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="CriticalActivityFloatLimit" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="CriticalActivityFloatThreshold" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="CriticalActivityPathType">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:enumeration value="Critical Float" />
+                <xsd:enumeration value="Longest Path" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="CriticalFloatThreshold" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="CurrentBaselineProjectObjectId" nillable="true" type="xsd:int" />
+          <xsd:element minOccurs="0" name="CurrentBudget" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="CurrentVariance" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="DataDate" nillable="true" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="DateAdded" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="DefaultPriceTimeUnits">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:enumeration value="" />
+                <xsd:enumeration value="Hour" />
+                <xsd:enumeration value="Day" />
+                <xsd:enumeration value="Week" />
+                <xsd:enumeration value="Month" />
+                <xsd:enumeration value="Year" />
+                <xsd:enumeration value="Days Hours" />
+                <xsd:enumeration value="Hours Minutes" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="Description">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="500" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="DiscountApplicationPeriod">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:enumeration value="Month" />
+                <xsd:enumeration value="Quarter" />
+                <xsd:enumeration value="Year" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="DistributedCurrentBudget" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="EarnedValueComputeType">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:enumeration value="" />
+                <xsd:enumeration value="Activity Percent Complete" />
+                <xsd:enumeration value="0 / 100" />
+                <xsd:enumeration value="50 / 50" />
+                <xsd:enumeration value="Custom Percent Complete" />
+                <xsd:enumeration value="WBS Milestones Percent Complete" />
+                <xsd:enumeration value="Activity Percent Complete Using Resource Curves" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="EarnedValueETCComputeType">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:enumeration value="" />
+                <xsd:enumeration value="ETC = Remaining Cost for Activity" />
+                <xsd:enumeration value="PF = 1" />
+                <xsd:enumeration value="PF = Custom Value" />
+                <xsd:enumeration value="PF = 1 / CPI" />
+                <xsd:enumeration value="PF = 1 / (CPI * SPI)" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="EarnedValueETCUserValue" nillable="true">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:double">
+                <xsd:minInclusive value="0.0" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="EarnedValueUserPercent" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="EnablePrimeSycFlag" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="EnablePublication" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="EnableSummarization" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="FinishDate" nillable="true" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="FiscalYearStartMonth" type="xsd:int" />
+          <xsd:element minOccurs="0" name="ForecastFinishDate" nillable="true" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="ForecastStartDate" nillable="true" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="GUID">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:pattern value="\{[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}\}|" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="HasFutureBucketData" nillable="true" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="HistoryInterval">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:enumeration value="" />
+                <xsd:enumeration value="Month" />
+                <xsd:enumeration value="Week" />
+                <xsd:enumeration value="Quarter" />
+                <xsd:enumeration value="Year" />
+                <xsd:enumeration value="Financial Period" />
+                <xsd:enumeration value="Daily" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="HistoryLevel">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:enumeration value="" />
+                <xsd:enumeration value="None" />
+                <xsd:enumeration value="Project" />
+                <xsd:enumeration value="WBS" />
+                <xsd:enumeration value="Activity" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="Id">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="40" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="IgnoreOtherProjectRelationships" nillable="true" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="IndependentETCLaborUnits" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="IndependentETCTotalCost" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="IntegratedType">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:enumeration value="" />
+                <xsd:enumeration value="ERP" />
+                <xsd:enumeration value="Gateway" />
+                <xsd:enumeration value="PrimeScope" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="IsTemplate" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="LastApplyActualsDate" nillable="true" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="LastFinancialPeriodObjectId" nillable="true" type="xsd:int" />
+          <xsd:element minOccurs="0" name="LastLevelDate" nillable="true" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="LastPublishedOn" nillable="true" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="LastScheduleDate" nillable="true" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="LastSummarizedDate" nillable="true" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="LastUpdateDate" nillable="true" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="LastUpdateUser">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="255" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="LevelAllResources" nillable="true" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="LevelDateFlag" nillable="true" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="LevelFloatThresholdCount" nillable="true" type="xsd:int" />
+          <xsd:element minOccurs="0" name="LevelOuterAssign" nillable="true" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="LevelOuterAssignPriority" nillable="true" type="xsd:int" />
+          <xsd:element minOccurs="0" name="LevelOverAllocationPercent" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="LevelPriorityList" type="xsd:string" />
+          <xsd:element minOccurs="0" name="LevelResourceList" type="xsd:string" />
+          <xsd:element minOccurs="0" name="LevelWithinFloat" nillable="true" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="LevelingPriority">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:int">
+                <xsd:minInclusive value="1" />
+                <xsd:maxInclusive value="100" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="LimitMultipleFloatPaths" nillable="true" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="LinkActualToActualThisPeriod" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="LinkPercentCompleteWithActual" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="LinkPlannedAndAtCompletionFlag" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="LocationName">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="100" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="LocationObjectId" nillable="true" type="xsd:int" />
+          <xsd:element minOccurs="0" name="MakeOpenEndedActivitiesCritical" nillable="true" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="MaximumMultipleFloatPaths" nillable="true">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:int">
+                <xsd:minInclusive value="0" />
+                <xsd:maxInclusive value="1000" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="MultipleFloatPathsEnabled" nillable="true" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="MultipleFloatPathsEndingActivityObjectId" nillable="true" type="xsd:int" />
+          <xsd:element minOccurs="0" name="MultipleFloatPathsUseTotalFloat" nillable="true" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="MustFinishByDate" nillable="true" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="Name">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="100" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="NetPresentValue" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="OBSName">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="100" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="OBSObjectId" type="xsd:int" />
+          <xsd:element minOccurs="0" name="ObjectId" type="xsd:int" />
+          <xsd:element minOccurs="0" name="OriginalBudget" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="OutOfSequenceScheduleType">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:enumeration value="" />
+                <xsd:enumeration value="Retained Logic" />
+                <xsd:enumeration value="Progress Override" />
+                <xsd:enumeration value="Actual Dates" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="OverallProjectScore" nillable="true" type="xsd:int" />
+          <xsd:element minOccurs="0" name="OwnerResourceObjectId" nillable="true" type="xsd:int" />
+          <xsd:element minOccurs="0" name="ParentEPSObjectId" type="xsd:int" />
+          <xsd:element minOccurs="0" name="PaybackPeriod" nillable="true" type="xsd:int" />
+          <xsd:element minOccurs="0" name="PlannedStartDate" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="PrimaryResourcesCanMarkActivitiesAsCompleted" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="ProjectForecastStartDate" nillable="true" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="ProjectScheduleType">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:enumeration value="" />
+                <xsd:enumeration value="Duration" />
+                <xsd:enumeration value="Resource" />
+                <xsd:enumeration value="Cost" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="PropertyType">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:enumeration value="" />
+                <xsd:enumeration value="ApplyActuals" />
+                <xsd:enumeration value="Scheduling" />
+                <xsd:enumeration value="ScheduleCheck" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ProposedBudget" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="PublicationPriority" type="xsd:int" />
+          <xsd:element minOccurs="0" name="PublishLevel">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:enumeration value="" />
+                <xsd:enumeration value="WBS Level" />
+                <xsd:enumeration value="Assignment Level" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="RelationshipLagCalendar">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:enumeration value="Predecessor Activity Calendar" />
+                <xsd:enumeration value="Successor Activity Calendar" />
+                <xsd:enumeration value="24 Hour Calendar" />
+                <xsd:enumeration value="Project Default Calendar" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ResetPlannedToRemainingFlag" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="ResourceCanBeAssignedToSameActivityMoreThanOnce" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="ResourcesCanAssignThemselvesToActivities" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="ResourcesCanEditAssignmentPercentComplete" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="ResourcesCanMarkAssignmentAsCompleted" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="ResourcesCanViewInactiveActivities" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="ReturnOnInvestment" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="RiskExposure" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="RiskLevel">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:enumeration value="Very High" />
+                <xsd:enumeration value="High" />
+                <xsd:enumeration value="Medium" />
+                <xsd:enumeration value="Low" />
+                <xsd:enumeration value="Very Low" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="RiskMatrixName">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="40" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="RiskMatrixObjectId" nillable="true" type="xsd:int" />
+          <xsd:element minOccurs="0" name="RiskScore" nillable="true" type="xsd:int" />
+          <xsd:element minOccurs="0" name="ScheduleWBSHierarchyType">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:enumeration value="Complete" />
+                <xsd:enumeration value="Partial" />
+                <xsd:enumeration value="Levels" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ScheduledFinishDate" nillable="true" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="SourceProjectObjectId" nillable="true" type="xsd:int" />
+          <xsd:element minOccurs="0" name="StartDate" nillable="true" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="StartToStartLagCalculationType" nillable="true" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="Status">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:enumeration value="Planned" />
+                <xsd:enumeration value="Active" />
+                <xsd:enumeration value="Inactive" />
+                <xsd:enumeration value="What-If" />
+                <xsd:enumeration value="Requested" />
+                <xsd:enumeration value="Template" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="StatusReviewerName" type="xsd:string" />
+          <xsd:element minOccurs="0" name="StatusReviewerObjectId" nillable="true" type="xsd:int" />
+          <xsd:element minOccurs="0" name="StrategicPriority" nillable="true">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:int">
+                <xsd:minInclusive value="1" />
+                <xsd:maxInclusive value="10000" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="SummarizeResourcesRolesByWBS" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="SummarizeToWBSLevel" nillable="true">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:int">
+                <xsd:minInclusive value="0" />
+                <xsd:maxInclusive value="50" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="SummarizedDataDate" nillable="true" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="SummaryAccountingVarianceByCost" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryAccountingVarianceByLaborUnits" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryActivityCount" nillable="true" type="xsd:int" />
+          <xsd:element minOccurs="0" name="SummaryActualDuration" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryActualExpenseCost" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryActualFinishDate" nillable="true" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="SummaryActualLaborCost" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryActualLaborUnits" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryActualMaterialCost" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryActualNonLaborCost" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryActualNonLaborUnits" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryActualStartDate" nillable="true" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="SummaryActualThisPeriodCost" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryActualThisPeriodLaborCost" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryActualThisPeriodLaborUnits" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryActualThisPeriodMaterialCost" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryActualThisPeriodNonLaborCost" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryActualThisPeriodNonLaborUnits" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryActualTotalCost" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryActualValueByCost" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryActualValueByLaborUnits" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryAtCompletionDuration" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryAtCompletionExpenseCost" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryAtCompletionLaborCost" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryAtCompletionLaborUnits" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryAtCompletionMaterialCost" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryAtCompletionNonLaborCost" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryAtCompletionNonLaborUnits" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryAtCompletionTotalCost" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryAtCompletionTotalCostVariance" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryBaselineCompletedActivityCount" nillable="true" type="xsd:int" />
+          <xsd:element minOccurs="0" name="SummaryBaselineDuration" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryBaselineExpenseCost" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryBaselineFinishDate" nillable="true" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="SummaryBaselineInProgressActivityCount" nillable="true" type="xsd:int" />
+          <xsd:element minOccurs="0" name="SummaryBaselineLaborCost" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryBaselineLaborUnits" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryBaselineMaterialCost" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryBaselineNonLaborCost" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryBaselineNonLaborUnits" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryBaselineNotStartedActivityCount" nillable="true" type="xsd:int" />
+          <xsd:element minOccurs="0" name="SummaryBaselineStartDate" nillable="true" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="SummaryBaselineTotalCost" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryBudgetAtCompletionByCost" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryBudgetAtCompletionByLaborUnits" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryCompletedActivityCount" nillable="true" type="xsd:int" />
+          <xsd:element minOccurs="0" name="SummaryCostPercentComplete" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryCostPercentOfPlanned" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryCostPerformanceIndexByCost" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryCostPerformanceIndexByLaborUnits" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryCostVarianceByCost" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryCostVarianceByLaborUnits" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryCostVarianceIndex" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryCostVarianceIndexByCost" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryCostVarianceIndexByLaborUnits" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryDurationPercentComplete" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryDurationPercentOfPlanned" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryDurationVariance" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryEarnedValueByCost" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryEarnedValueByLaborUnits" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryEstimateAtCompletionByCost" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryEstimateAtCompletionByLaborUnits" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryEstimateAtCompletionHighPercentByLaborUnits" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryEstimateAtCompletionLowPercentByLaborUnits" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryEstimateToCompleteByCost" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryEstimateToCompleteByLaborUnits" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryExpenseCostPercentComplete" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryExpenseCostVariance" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryFinishDateVariance" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryInProgressActivityCount" nillable="true" type="xsd:int" />
+          <xsd:element minOccurs="0" name="SummaryLaborCostPercentComplete" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryLaborCostVariance" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryLaborUnitsPercentComplete" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryLaborUnitsVariance" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryLevel">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:enumeration value="" />
+                <xsd:enumeration value="WBS Level" />
+                <xsd:enumeration value="Assignment Level" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="SummaryMaterialCostPercentComplete" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryMaterialCostVariance" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryNonLaborCostPercentComplete" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryNonLaborCostVariance" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryNonLaborUnitsPercentComplete" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryNonLaborUnitsVariance" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryNotStartedActivityCount" nillable="true" type="xsd:int" />
+          <xsd:element minOccurs="0" name="SummaryPerformancePercentCompleteByCost" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryPerformancePercentCompleteByLaborUnits" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryPlannedCost" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryPlannedDuration" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryPlannedExpenseCost" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryPlannedFinishDate" nillable="true" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="SummaryPlannedLaborCost" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryPlannedLaborUnits" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryPlannedMaterialCost" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryPlannedNonLaborCost" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryPlannedNonLaborUnits" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryPlannedStartDate" nillable="true" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="SummaryPlannedValueByCost" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryPlannedValueByLaborUnits" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryProgressFinishDate" nillable="true" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="SummaryRemainingDuration" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryRemainingExpenseCost" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryRemainingFinishDate" nillable="true" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="SummaryRemainingLaborCost" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryRemainingLaborUnits" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryRemainingMaterialCost" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryRemainingNonLaborCost" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryRemainingNonLaborUnits" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryRemainingStartDate" nillable="true" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="SummaryRemainingTotalCost" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummarySchedulePercentComplete" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummarySchedulePercentCompleteByLaborUnits" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummarySchedulePerformanceIndexByCost" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummarySchedulePerformanceIndexByLaborUnits" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryScheduleVarianceByCost" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryScheduleVarianceByLaborUnits" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryScheduleVarianceIndex" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryScheduleVarianceIndexByCost" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryScheduleVarianceIndexByLaborUnits" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryStartDateVariance" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryToCompletePerformanceIndexByCost" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryTotalCostVariance" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryTotalFloat" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryUnitsPercentComplete" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SummaryVarianceAtCompletionByLaborUnits" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="SyncWbsHierarchyFlag" nillable="true" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="TeamMemberActivityFields">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="512" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="TeamMemberAddNewActualUnits" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="TeamMemberAssignmentOption">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="32" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="TeamMemberCanStatusOtherResources" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="TeamMemberCanUpdateNotebooks" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="TeamMemberDisplayPlannedUnits" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="TeamMemberIncludePrimaryResources" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="TeamMemberResourceAssignmentFields">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="512" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="TeamMemberStepsAddDeletable" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="TeamMemberViewableFields">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="512" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="TotalBenefitPlan" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="TotalBenefitPlanTally" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="TotalFunding" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="TotalSpendingPlan" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="TotalSpendingPlanTally" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="UnallocatedBudget" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="UndistributedCurrentVariance" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="UnifierCBSTasksOnlyFlag" nillable="true" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="UnifierDataMappingName">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="200" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="UnifierDeleteActivitiesFlag" nillable="true" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="UnifierEnabledFlag" nillable="true" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="UnifierProjectNumber">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="200" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="UnifierScheduleSheetName">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="200" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="UseExpectedFinishDates" nillable="true" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="UseProjectBaselineForEarnedValue" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="WBSCodeSeparator">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="2" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="WBSHierarchyLevels" nillable="true" type="xsd:int" />
+          <xsd:element minOccurs="0" name="WBSMilestonePercentComplete" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="WBSObjectId" nillable="true" type="xsd:int" />
+          <xsd:element minOccurs="0" name="WebSiteRootDirectory">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="120" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="WebSiteURL">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="200" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+        </xsd:sequence>
+        <xsd:attribute name="external" type="xsd:boolean" />
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="CreateProjects">
+    <wsdl:part name="params" element="tns:CreateProjects" />
+  </wsdl:message>
+  <wsdl:message name="CreateProjectsResponse">
+    <wsdl:part name="result" element="tns:CreateProjectsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadProjects">
+    <wsdl:part name="params" element="tns:ReadProjects" />
+  </wsdl:message>
+  <wsdl:message name="ReadProjectsResponse">
+    <wsdl:part name="result" element="tns:ReadProjectsResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateProjects">
+    <wsdl:part name="params" element="tns:UpdateProjects" />
+  </wsdl:message>
+  <wsdl:message name="UpdateProjectsResponse">
+    <wsdl:part name="result" element="tns:UpdateProjectsResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteProjects">
+    <wsdl:part name="params" element="tns:DeleteProjects" />
+  </wsdl:message>
+  <wsdl:message name="DeleteProjectsResponse">
+    <wsdl:part name="result" element="tns:DeleteProjectsResponse" />
+  </wsdl:message>
+  <wsdl:message name="CopyBaseline">
+    <wsdl:part name="params" element="tns:CopyBaseline" />
+  </wsdl:message>
+  <wsdl:message name="CopyBaselineResponse">
+    <wsdl:part name="result" element="tns:CopyBaselineResponse" />
+  </wsdl:message>
+  <wsdl:message name="CopyProject">
+    <wsdl:part name="params" element="tns:CopyProject" />
+  </wsdl:message>
+  <wsdl:message name="CopyProjectResponse">
+    <wsdl:part name="result" element="tns:CopyProjectResponse" />
+  </wsdl:message>
+  <wsdl:message name="CopyProjectAsBaseline">
+    <wsdl:part name="params" element="tns:CopyProjectAsBaseline" />
+  </wsdl:message>
+  <wsdl:message name="CopyProjectAsBaselineResponse">
+    <wsdl:part name="result" element="tns:CopyProjectAsBaselineResponse" />
+  </wsdl:message>
+  <wsdl:message name="CopyProjectAsReflection">
+    <wsdl:part name="params" element="tns:CopyProjectAsReflection" />
+  </wsdl:message>
+  <wsdl:message name="CopyProjectAsReflectionResponse">
+    <wsdl:part name="result" element="tns:CopyProjectAsReflectionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConvertProjectToBaseline">
+    <wsdl:part name="params" element="tns:ConvertProjectToBaseline" />
+  </wsdl:message>
+  <wsdl:message name="ConvertProjectToBaselineResponse">
+    <wsdl:part name="result" element="tns:ConvertProjectToBaselineResponse" />
+  </wsdl:message>
+  <wsdl:message name="CalculateProjectScore">
+    <wsdl:part name="params" element="tns:CalculateProjectScore" />
+  </wsdl:message>
+  <wsdl:message name="CalculateProjectScoreResponse">
+    <wsdl:part name="result" element="tns:CalculateProjectScoreResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateCopyAsTemplate">
+    <wsdl:part name="params" element="tns:CreateCopyAsTemplate" />
+  </wsdl:message>
+  <wsdl:message name="CreateCopyAsTemplateResponse">
+    <wsdl:part name="result" element="tns:CreateCopyAsTemplateResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateProjectFromTemplate">
+    <wsdl:part name="params" element="tns:CreateProjectFromTemplate" />
+  </wsdl:message>
+  <wsdl:message name="CreateProjectFromTemplateResponse">
+    <wsdl:part name="result" element="tns:CreateProjectFromTemplateResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateProjectPreferences">
+    <wsdl:part name="params" element="tns:UpdateProjectPreferences" />
+  </wsdl:message>
+  <wsdl:message name="UpdateProjectPreferencesResponse">
+    <wsdl:part name="result" element="tns:UpdateProjectPreferencesResponse" />
+  </wsdl:message>
+  <wsdl:message name="CopyWBSFromTemplate">
+    <wsdl:part name="params" element="tns:CopyWBSFromTemplate" />
+  </wsdl:message>
+  <wsdl:message name="CopyWBSFromTemplateResponse">
+    <wsdl:part name="result" element="tns:CopyWBSFromTemplateResponse" />
+  </wsdl:message>
+  <wsdl:message name="PublishProject">
+    <wsdl:part name="params" element="tns:PublishProject" />
+  </wsdl:message>
+  <wsdl:message name="PublishProjectResponse">
+    <wsdl:part name="result" element="tns:PublishProjectResponse" />
+  </wsdl:message>
+  <wsdl:message name="AssignProjectAsBaseline">
+    <wsdl:part name="params" element="tns:AssignProjectAsBaseline" />
+  </wsdl:message>
+  <wsdl:message name="AssignProjectAsBaselineResponse">
+    <wsdl:part name="result" element="tns:AssignProjectAsBaselineResponse" />
+  </wsdl:message>
+  <wsdl:message name="IsProjectLocked">
+    <wsdl:part name="params" element="tns:IsProjectLocked" />
+  </wsdl:message>
+  <wsdl:message name="IsProjectLockedResponse">
+    <wsdl:part name="result" element="tns:IsProjectLockedResponse" />
+  </wsdl:message>
+  <wsdl:message name="LoadActivitiesNewerThanBaseline">
+    <wsdl:part name="params" element="tns:LoadActivitiesNewerThanBaseline" />
+  </wsdl:message>
+  <wsdl:message name="LoadActivitiesNewerThanBaselineResponse">
+    <wsdl:part name="result" element="tns:LoadActivitiesNewerThanBaselineResponse" />
+  </wsdl:message>
+  <wsdl:message name="LoadActivityUDFValuesNewerThanBaseline">
+    <wsdl:part name="params" element="tns:LoadActivityUDFValuesNewerThanBaseline" />
+  </wsdl:message>
+  <wsdl:message name="LoadActivityUDFValuesNewerThanBaselineResponse">
+    <wsdl:part name="result" element="tns:LoadActivityUDFValuesNewerThanBaselineResponse" />
+  </wsdl:message>
+  <wsdl:message name="LoadActivityCodesNewerThanBaseline">
+    <wsdl:part name="params" element="tns:LoadActivityCodesNewerThanBaseline" />
+  </wsdl:message>
+  <wsdl:message name="LoadActivityCodesNewerThanBaselineResponse">
+    <wsdl:part name="result" element="tns:LoadActivityCodesNewerThanBaselineResponse" />
+  </wsdl:message>
+  <wsdl:message name="LoadAllResources">
+    <wsdl:part name="params" element="tns:LoadAllResources" />
+  </wsdl:message>
+  <wsdl:message name="LoadAllResourcesResponse">
+    <wsdl:part name="result" element="tns:LoadAllResourcesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IntegrationFault">
+    <wsdl:part name="fault" element="intgfault:IntegrationFault" />
+  </wsdl:message>
+  <wsdl:portType name="ProjectPortType">
+    <wsdl:operation name="CreateProjects">
+      <wsdl:input name="CreateProjectsRequest" message="tns:CreateProjects" />
+      <wsdl:output name="CreateProjectsResponse" message="tns:CreateProjectsResponse" />
+      <wsdl:fault name="IntegrationFault" message="tns:IntegrationFault" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadProjects">
+      <wsdl:input name="ReadProjectsRequest" message="tns:ReadProjects" />
+      <wsdl:output name="ReadProjectsResponse" message="tns:ReadProjectsResponse" />
+      <wsdl:fault name="IntegrationFault" message="tns:IntegrationFault" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProjects">
+      <wsdl:input name="UpdateProjectsRequest" message="tns:UpdateProjects" />
+      <wsdl:output name="UpdateProjectsResponse" message="tns:UpdateProjectsResponse" />
+      <wsdl:fault name="IntegrationFault" message="tns:IntegrationFault" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProjects">
+      <wsdl:input name="DeleteProjectsRequest" message="tns:DeleteProjects" />
+      <wsdl:output name="DeleteProjectsResponse" message="tns:DeleteProjectsResponse" />
+      <wsdl:fault name="IntegrationFault" message="tns:IntegrationFault" />
+    </wsdl:operation>
+    <wsdl:operation name="CopyBaseline">
+      <wsdl:input name="CopyBaselineRequest" message="tns:CopyBaseline" />
+      <wsdl:output name="CopyBaselineResponse" message="tns:CopyBaselineResponse" />
+      <wsdl:fault name="IntegrationFault" message="tns:IntegrationFault" />
+    </wsdl:operation>
+    <wsdl:operation name="CopyProject">
+      <wsdl:input name="CopyProjectRequest" message="tns:CopyProject" />
+      <wsdl:output name="CopyProjectResponse" message="tns:CopyProjectResponse" />
+      <wsdl:fault name="IntegrationFault" message="tns:IntegrationFault" />
+    </wsdl:operation>
+    <wsdl:operation name="CopyProjectAsBaseline">
+      <wsdl:input name="CopyProjectAsBaselineRequest" message="tns:CopyProjectAsBaseline" />
+      <wsdl:output name="CopyProjectAsBaselineResponse" message="tns:CopyProjectAsBaselineResponse" />
+      <wsdl:fault name="IntegrationFault" message="tns:IntegrationFault" />
+    </wsdl:operation>
+    <wsdl:operation name="CopyProjectAsReflection">
+      <wsdl:input name="CopyProjectAsReflectionRequest" message="tns:CopyProjectAsReflection" />
+      <wsdl:output name="CopyProjectAsReflectionResponse" message="tns:CopyProjectAsReflectionResponse" />
+      <wsdl:fault name="IntegrationFault" message="tns:IntegrationFault" />
+    </wsdl:operation>
+    <wsdl:operation name="ConvertProjectToBaseline">
+      <wsdl:input name="ConvertProjectToBaselineRequest" message="tns:ConvertProjectToBaseline" />
+      <wsdl:output name="ConvertProjectToBaselineResponse" message="tns:ConvertProjectToBaselineResponse" />
+      <wsdl:fault name="IntegrationFault" message="tns:IntegrationFault" />
+    </wsdl:operation>
+    <wsdl:operation name="CalculateProjectScore">
+      <wsdl:input name="CalculateProjectScoreRequest" message="tns:CalculateProjectScore" />
+      <wsdl:output name="CalculateProjectScoreResponse" message="tns:CalculateProjectScoreResponse" />
+      <wsdl:fault name="IntegrationFault" message="tns:IntegrationFault" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateCopyAsTemplate">
+      <wsdl:input name="CreateCopyAsTemplateRequest" message="tns:CreateCopyAsTemplate" />
+      <wsdl:output name="CreateCopyAsTemplateResponse" message="tns:CreateCopyAsTemplateResponse" />
+      <wsdl:fault name="IntegrationFault" message="tns:IntegrationFault" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateProjectFromTemplate">
+      <wsdl:input name="CreateProjectFromTemplateRequest" message="tns:CreateProjectFromTemplate" />
+      <wsdl:output name="CreateProjectFromTemplateResponse" message="tns:CreateProjectFromTemplateResponse" />
+      <wsdl:fault name="IntegrationFault" message="tns:IntegrationFault" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProjectPreferences">
+      <wsdl:input name="UpdateProjectPreferencesRequest" message="tns:UpdateProjectPreferences" />
+      <wsdl:output name="UpdateProjectPreferencesResponse" message="tns:UpdateProjectPreferencesResponse" />
+      <wsdl:fault name="IntegrationFault" message="tns:IntegrationFault" />
+    </wsdl:operation>
+    <wsdl:operation name="CopyWBSFromTemplate">
+      <wsdl:input name="CopyWBSFromTemplateRequest" message="tns:CopyWBSFromTemplate" />
+      <wsdl:output name="CopyWBSFromTemplateResponse" message="tns:CopyWBSFromTemplateResponse" />
+      <wsdl:fault name="IntegrationFault" message="tns:IntegrationFault" />
+    </wsdl:operation>
+    <wsdl:operation name="PublishProject">
+      <wsdl:input name="PublishProjectRequest" message="tns:PublishProject" />
+      <wsdl:output name="PublishProjectResponse" message="tns:PublishProjectResponse" />
+      <wsdl:fault name="IntegrationFault" message="tns:IntegrationFault" />
+    </wsdl:operation>
+    <wsdl:operation name="AssignProjectAsBaseline">
+      <wsdl:input name="AssignProjectAsBaselineRequest" message="tns:AssignProjectAsBaseline" />
+      <wsdl:output name="AssignProjectAsBaselineResponse" message="tns:AssignProjectAsBaselineResponse" />
+      <wsdl:fault name="IntegrationFault" message="tns:IntegrationFault" />
+    </wsdl:operation>
+    <wsdl:operation name="IsProjectLocked">
+      <wsdl:input name="IsProjectLockedRequest" message="tns:IsProjectLocked" />
+      <wsdl:output name="IsProjectLockedResponse" message="tns:IsProjectLockedResponse" />
+      <wsdl:fault name="IntegrationFault" message="tns:IntegrationFault" />
+    </wsdl:operation>
+    <wsdl:operation name="LoadActivitiesNewerThanBaseline">
+      <wsdl:input name="LoadActivitiesNewerThanBaselineRequest" message="tns:LoadActivitiesNewerThanBaseline" />
+      <wsdl:output name="LoadActivitiesNewerThanBaselineResponse" message="tns:LoadActivitiesNewerThanBaselineResponse" />
+      <wsdl:fault name="IntegrationFault" message="tns:IntegrationFault" />
+    </wsdl:operation>
+    <wsdl:operation name="LoadActivityUDFValuesNewerThanBaseline">
+      <wsdl:input name="LoadActivityUDFValuesNewerThanBaselineRequest" message="tns:LoadActivityUDFValuesNewerThanBaseline" />
+      <wsdl:output name="LoadActivityUDFValuesNewerThanBaselineResponse" message="tns:LoadActivityUDFValuesNewerThanBaselineResponse" />
+      <wsdl:fault name="IntegrationFault" message="tns:IntegrationFault" />
+    </wsdl:operation>
+    <wsdl:operation name="LoadActivityCodesNewerThanBaseline">
+      <wsdl:input name="LoadActivityCodesNewerThanBaselineRequest" message="tns:LoadActivityCodesNewerThanBaseline" />
+      <wsdl:output name="LoadActivityCodesNewerThanBaselineResponse" message="tns:LoadActivityCodesNewerThanBaselineResponse" />
+      <wsdl:fault name="IntegrationFault" message="tns:IntegrationFault" />
+    </wsdl:operation>
+    <wsdl:operation name="LoadAllResources">
+      <wsdl:input name="LoadAllResourcesRequest" message="tns:LoadAllResources" />
+      <wsdl:output name="LoadAllResourcesResponse" message="tns:LoadAllResourcesResponse" />
+      <wsdl:fault name="IntegrationFault" message="tns:IntegrationFault" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ProjectPortBinding" type="tns:ProjectPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CreateProjects">
+      <soap:operation soapAction="CreateProjects" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="IntegrationFault">
+        <soap:fault use="literal" name="IntegrationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ReadProjects">
+      <soap:operation soapAction="ReadProjects" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="IntegrationFault">
+        <soap:fault use="literal" name="IntegrationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProjects">
+      <soap:operation soapAction="UpdateProjects" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="IntegrationFault">
+        <soap:fault use="literal" name="IntegrationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProjects">
+      <soap:operation soapAction="DeleteProjects" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="IntegrationFault">
+        <soap:fault use="literal" name="IntegrationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CopyBaseline">
+      <soap:operation soapAction="CopyBaseline" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="IntegrationFault">
+        <soap:fault use="literal" name="IntegrationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CopyProject">
+      <soap:operation soapAction="CopyProject" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="IntegrationFault">
+        <soap:fault use="literal" name="IntegrationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CopyProjectAsBaseline">
+      <soap:operation soapAction="CopyProjectAsBaseline" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="IntegrationFault">
+        <soap:fault use="literal" name="IntegrationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CopyProjectAsReflection">
+      <soap:operation soapAction="CopyProjectAsReflection" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="IntegrationFault">
+        <soap:fault use="literal" name="IntegrationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ConvertProjectToBaseline">
+      <soap:operation soapAction="ConvertProjectToBaseline" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="IntegrationFault">
+        <soap:fault use="literal" name="IntegrationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CalculateProjectScore">
+      <soap:operation soapAction="CalculateProjectScore" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="IntegrationFault">
+        <soap:fault use="literal" name="IntegrationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CreateCopyAsTemplate">
+      <soap:operation soapAction="CreateCopyAsTemplate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="IntegrationFault">
+        <soap:fault use="literal" name="IntegrationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CreateProjectFromTemplate">
+      <soap:operation soapAction="CreateProjectFromTemplate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="IntegrationFault">
+        <soap:fault use="literal" name="IntegrationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProjectPreferences">
+      <soap:operation soapAction="UpdateProjectPreferences" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="IntegrationFault">
+        <soap:fault use="literal" name="IntegrationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CopyWBSFromTemplate">
+      <soap:operation soapAction="CopyWBSFromTemplate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="IntegrationFault">
+        <soap:fault use="literal" name="IntegrationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="PublishProject">
+      <soap:operation soapAction="PublishProject" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="IntegrationFault">
+        <soap:fault use="literal" name="IntegrationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="AssignProjectAsBaseline">
+      <soap:operation soapAction="AssignProjectAsBaseline" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="IntegrationFault">
+        <soap:fault use="literal" name="IntegrationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="IsProjectLocked">
+      <soap:operation soapAction="IsProjectLocked" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="IntegrationFault">
+        <soap:fault use="literal" name="IntegrationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="LoadActivitiesNewerThanBaseline">
+      <soap:operation soapAction="LoadActivitiesNewerThanBaseline" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="IntegrationFault">
+        <soap:fault use="literal" name="IntegrationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="LoadActivityUDFValuesNewerThanBaseline">
+      <soap:operation soapAction="LoadActivityUDFValuesNewerThanBaseline" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="IntegrationFault">
+        <soap:fault use="literal" name="IntegrationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="LoadActivityCodesNewerThanBaseline">
+      <soap:operation soapAction="LoadActivityCodesNewerThanBaseline" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="IntegrationFault">
+        <soap:fault use="literal" name="IntegrationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="LoadAllResources">
+      <soap:operation soapAction="LoadAllResources" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="IntegrationFault">
+        <soap:fault use="literal" name="IntegrationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ProjectService">
+    <wsdl:port name="ProjectPort" binding="tns:ProjectPortBinding">
+      <soap:address location="http://oyster.gnet:8206/p6ws/services/ProjectService" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

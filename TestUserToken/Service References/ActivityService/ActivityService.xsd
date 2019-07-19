@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:p6exp="http://xmlns.oracle.com/Primavera/P6/WS/IntegrationFaultType/V1" elementFormDefault="qualified" targetNamespace="http://xmlns.oracle.com/Primavera/P6/WS/IntegrationFaultType/V1" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:complexType name="IntegrationFaultType">
+    <xsd:sequence>
+      <xsd:element name="ErrorType" type="p6exp:IntegrationFaultCodeType" />
+      <xsd:element name="ErrorCode" type="xsd:int" />
+      <xsd:element minOccurs="0" name="ErrorDescription" type="xsd:string" />
+      <xsd:element minOccurs="0" name="StackTrace" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="IntegrationFault" type="p6exp:IntegrationFaultType" />
+  <xsd:simpleType name="IntegrationFaultCodeType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="General" />
+      <xsd:enumeration value="Presentation" />
+      <xsd:enumeration value="Network" />
+      <xsd:enumeration value="Server" />
+      <xsd:enumeration value="Business Rules" />
+    </xsd:restriction>
+  </xsd:simpleType>
+</xsd:schema>
